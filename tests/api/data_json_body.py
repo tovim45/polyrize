@@ -5,8 +5,8 @@ json_body = [{
             "val": "val1",
             "valType": "str1"
         }
-    ]
-},
+        ]
+    },
     {
         "data": [
             {
