@@ -22,17 +22,17 @@ def get_list_of_poly_data():
     return requests.get(uri, headers=headers).json()
 
 
-def created_object():
-    json_body = {
-        "object_id": 0,
-        "data": [
-            {
-                "key": "key14",
-                "val": "val4",
-                "valType": "str14"
-            }
-        ]
-    }
+def created_object(json_body):
+    # json_body = {
+    #     "object_id": 0,
+    #     "data": [
+    #         {
+    #             "key": "key14",
+    #             "val": "val4",
+    #             "valType": "str14"
+    #         }
+    #     ]
+    # }
     headers = {'Authorization': get_token(200), 'Content-Type': 'application/json'}
     uri = base_url + "/api/poly"
     resp = requests.post(uri, headers=headers, json=json_body)
@@ -41,6 +41,11 @@ def created_object():
 
 
 def get_poly_data(object_id):
+    """
+    get poly data by object_id
+    :param object_id:
+    :return: object_id - 1
+    """
     headers = {'Authorization': get_token(200), 'Content-Type': 'application/json'}
     uri = base_url + "/api/poly"
     return requests.get(uri, headers=headers).json()[object_id - 1]['data']
@@ -51,11 +56,11 @@ def delete_poly_data(object_id):
     uri = base_url + "/api/poly"
     resp = requests.delete(uri, headers=headers, data={'object_id': object_id})
     data = resp.json()
-    print(data)
+    return data
 
 
-print(get_list_of_poly_data())
-created_object()
-print(get_poly_data(5))
-print(get_poly_data(6))
-delete_poly_data(2)
+# print(get_list_of_poly_data())
+# created_object()
+# print(get_poly_data(5))
+# print(get_poly_data(6))
+# delete_poly_data(2)
