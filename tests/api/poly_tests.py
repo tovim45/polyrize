@@ -1,7 +1,7 @@
 import pytest
 
 from tests.api.data_json_body import json_body
-from tests.api.poly_api import get_list_of_poly_data, get_poly_data, delete_poly_data, created_object, \
+from tests.api.poly_api import get_list_of_poly_data, delete_poly_data, created_object, \
     get_token_negative_test, auth_json
 
 objects_list = []
