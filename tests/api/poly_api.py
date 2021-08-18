@@ -21,7 +21,9 @@ uri = base_url + "/api/poly"
 
 
 def get_list_of_poly_data():
-    return requests.get(uri, headers=headers).json()
+    resp = requests.get(uri, headers=headers)
+    data = resp.json()
+    return [str(resp.status_code), data]
 
 
 def created_object(json_body):
@@ -39,8 +41,7 @@ def get_poly_data(object_id):
 
 
 def delete_poly_data(object_id):
-    resp = requests.delete(uri, headers=headers, data={'object_id': object_id})
-    return resp.json()
+    return requests.delete(uri + "/" + str(object_id), headers=headers).json()
 
 
 def get_token_negative_test(url, json):
